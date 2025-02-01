@@ -3,12 +3,13 @@ const session = require('express-session');
 const PgSession = require('connect-pg-simple')(session);
 const { sequelize, connectDB } = require('./database');
 const User = require('./models/User');
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
 
 connectDB();
-
+app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
